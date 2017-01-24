@@ -10,8 +10,8 @@ var apiSecret = process.env['SALESFORCEIQ_SECRET'];
 describe('SalesforceIQ Account Operations', function() {
   var salesforceIQ = new SalesforceIQ(apiKey, apiSecret);
   var accountId = null;
-  var companyName = 'Test - Sigma Software';
-  var companyNameUpdated = 'Test - Sigma Software: Updated';
+  var companyName = 'Test - TeselaGen';
+  var companyNameUpdated = 'Test - TeselaGen: Updated';
 
   it('can the fields for account', function(done) {
     salesforceIQ.getAccountFields(function(err, data) {

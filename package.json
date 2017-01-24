@@ -6,8 +6,12 @@
   "directories": {
     "test": "test"
   },
+
   "scripts": {
-    "test": "mocha test/"
+    "test": "SALESFORCEIQ_KEY='588689a3e4b02b6c15e9fcbe' SALESFORCEIQ_SECRET='onocshm1s4Sztnh6976AGg53VcJ' mocha test/",
+    "testContact": "SALESFORCEIQ_KEY='588689a3e4b02b6c15e9fcbe' SALESFORCEIQ_SECRET='onocshm1s4Sztnh6976AGg53VcJ' mocha test/contact-ops.js",
+    "testAccount": "SALESFORCEIQ_KEY='588689a3e4b02b6c15e9fcbe' SALESFORCEIQ_SECRET='onocshm1s4Sztnh6976AGg53VcJ' mocha test/account-ops.js",
+    "testList": "SALESFORCEIQ_KEY='588689a3e4b02b6c15e9fcbe' SALESFORCEIQ_SECRET='onocshm1s4Sztnh6976AGg53VcJ' mocha test/list-ops.js"
   },
   "repository": {
     "type": "git",

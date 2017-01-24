@@ -10,15 +10,15 @@ var apiSecret = process.env['SALESFORCEIQ_SECRET'];
 
 describe('SalesforceIQ Contact Operations', function() {
   var salesforceIQ = new SalesforceIQ(apiKey, apiSecret);
-  var companyName = 'Test - Sigma Software';
-  var companyNameUpdated = 'Test - Sigma Software Updated';
-  var contactName = 'User Leslie';
-  var contactNameUpdated = 'User Leslie - Updated';
-  var contactEmail = 'leslie@test.sigmasofware.com';
+  var companyName = 'Test TeselaGen';
+  var companyNameUpdated = 'Test TeselaGen Update';
+  var contactName = 'User Sam';
+  var contactNameUpdated = 'User Sam - Updated';
+  var contactEmail = 'sam@test.teselagen.com';
   var contactId = null;
 
   /* SKIPPING AS API DOES NOT HAVE ABILITY TO DELETE AFTER CREATING */
-  it.skip('can create a contact', function(done) {
+  it('can create a contact', function(done) {
     salesforceIQ.createContact({
       name: contactName,
       company: companyName,
@@ -87,12 +87,11 @@ describe('SalesforceIQ Contact Operations', function() {
     });
   });
 
-  it.skip('should delete a contact', function(done) {
+  it('should delete a contact', function(done) {
     // NJC this does not work.  IQ has 'archive' in UI not in API
     salesforceIQ.deleteContact(contactId, function(err, data) {
       assert.ifError(err);
       // REF print(err, data);
-
       done();
     });
   });

@@ -13,17 +13,18 @@ var apiSecret = process.env['SALESFORCEIQ_SECRET'];
 describe('SalesforceIQ List Operations', function() {
   var salesforceIQ = new SalesforceIQ(apiKey, apiSecret);
   var list = {
-    id: uid(24),
-    title: 'API-Test-List',
-    listType: 'contact',
+    id: "5886a781e4b06e9e32450c8d",
+    title: "Demos",
+    listType: "contact",
     fields: [{
-      id: uid(24),
-      name: 'Contact'
+      id: "2",
+      name: 'Email'
     }]
   };
 
-  var listId = null;
-  var listItemId = null;
+  var listId = "5886a781e4b06e9e32450c8d";
+  var demosListId = "5886a781e4b06e9e32450c8d";
+  var listItemId = "2";
 
   it.skip('can create a list', function(done) {
     salesforceIQ.createList(list, function(err, res) {
@@ -37,7 +38,6 @@ describe('SalesforceIQ List Operations', function() {
     salesforceIQ.getLists(function(err, res) {
       assert.ifError(err);
       assert.equal(res.length > 0, true);
-
       // lists = res;
       listId = res[0].id;
       done();
@@ -64,7 +64,7 @@ describe('SalesforceIQ List Operations', function() {
   });
 
   it('can get filtered items from a list', function(done) {
-    salesforceIQ.getListItems(listId, 'start=0&_limit=1', function(err, res) {
+    salesforceIQ.getListItems(listId, '_start=0&_limit=1', function(err, res) {
       assert.ifError(err);
       assert.equal(res.length > 0, true);
       done();
@@ -89,17 +89,16 @@ describe('SalesforceIQ List Operations', function() {
     });
   });
 
-  it.skip('can create an item in a list', function(done) {
-    salesforceIQ.createListItem(listId, {
-      accountId: accountId,
+  it('can create an item in a list', function(done) {
+    var contactId ='5886a799e4b06e9e32451557' //SD this is my contact id
+    salesforceIQ.createListItem(demosListId, {
       contactIds: [
-        contactId
+        contactId 
       ]
     }, function(err, res) {
       assert.ifError(err);
       assert.ok(res.id);
       assert.equal(res.contactIds[0], contactId);
-
       done();
     });
   });
